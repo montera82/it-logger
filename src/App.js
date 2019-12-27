@@ -6,11 +6,12 @@ import M from 'materialize-css/dist/js/materialize.min'
 function App() {
 
 	useEffect(() => {
-		M.init()
+		// initialize materialize javascript
+		M.AutoInit()
 	})
 
 	return (
-		<p>IT Logger</p>
+		<p>My app</p>
 	);
 }
 
