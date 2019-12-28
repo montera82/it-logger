@@ -6,6 +6,11 @@ import SearchBar from "./Components/layout/SearchBar";
 import Logs from "./Components/log/Logs";
 import AddBtn from "./Components/layout/AddBtn";
 import AddLogModal from "./Components/log/AddLogModal";
+import EditLogModal from "./Components/log/EditLogModal";
+import AddTechModal from "./Components/techs/AddTechModal";
+import TechListModal from "./Components/techs/TechListModal";
+import {Provider} from "react-redux"
+import store from "./store";
 
 function App() {
 
@@ -15,14 +20,19 @@ function App() {
 	})
 
 	return (
+		<Provider store={store}>
 		<Fragment>
 			<SearchBar/>
 			<div className="container">
 				<AddBtn/>
 				<AddLogModal/>
+				<EditLogModal/>
+				<AddTechModal/>
+				<TechListModal/>
 				<Logs/>
 			</div>
 		</Fragment>
+		</Provider>
 	);
 }
 
