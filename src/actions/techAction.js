@@ -1,4 +1,4 @@
-import {ADD_TECH, GET_LOGS, GET_TECHS, LOGS_ERROR, TECHS_ERROR} from "./types";
+import {ADD_TECH, DELETE_TECH, GET_TECHS, TECHS_ERROR} from "./types";
 import {setLoading} from "./logAction";
 
 
@@ -20,6 +20,27 @@ export const getTechs = () => async (dispatch) => {
 		})
 	}
 }
+
+export const deleteTech = (id) => async (dispatch) => {
+	try {
+		setLoading()
+		await fetch(`/techs/${id}`, {
+			'method': 'DELETE'
+		});
+
+		dispatch({
+			type: DELETE_TECH,
+			payload: id
+		})
+
+	} catch (err) {
+		dispatch({
+			type: TECHS_ERROR,
+			payload: err
+		})
+	}
+}
+
 
 export const addTech = (tech) => async (dispatch) => {
 	try {
