@@ -3,7 +3,7 @@ import {
 	CLEAR_CURRENT,
 	DELETE_LOG,
 	GET_LOGS,
-	LOGS_ERROR,
+	LOGS_ERROR, SEARCH_LOGS,
 	SET_CURRENT,
 	SET_LOADING,
 	UPDATE_LOG
@@ -23,7 +23,13 @@ export default (state = initialState, action) => {
 				...state,
 				loading: true
 			};
-		case GET_LOGS:
+		case GET_LOGS || SEARCH_LOGS:
+			return {
+				...state,
+				logs: action.payload,
+				loading: false
+			};
+		case SEARCH_LOGS:
 			return {
 				...state,
 				logs: action.payload,

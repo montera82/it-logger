@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useRef} from 'react';
+import {connect} from 'react-redux';
+import {searchLogs} from "../../actions/logAction";
 
-const SearchBar = () => {
+
+const SearchBar = ({searchLogs}) => {
+
+	const text = useRef('');
+	const onSearch = (e) => searchLogs(text.current.value);
 	return (
 		<nav style={{marginBottom: '30px'}} className='blue'>
 			<div className="nav-wrapper">
 				<form>
 					<div className="input-field">
-						<input id="search" type="search" required/>
+						<input id="search" type="search" placeholder="Search logs.." ref={text} onChange={onSearch} required/>
 						<label className="label-icon" htmlFor="search"><i
 							className="material-icons">search</i></label>
 						<i className="material-icons">close</i>
@@ -17,4 +23,5 @@ const SearchBar = () => {
 	)
 };
 
-export default SearchBar;
+
+export default connect(null, {searchLogs})(SearchBar);
